@@ -1,4 +1,41 @@
-🏢 Portaria Inteligente - Biometria Facial & Interfone DigitalEste projeto é um sistema de controle de acesso de alta segurança desenvolvido para a disciplina de Segurança de Sistemas. Ele utiliza Inteligência Artificial para reconhecimento facial, integração com Telegram para notificações em tempo real e um protocolo de segurança para entradas sob coação (Pânico).Status do Projeto: 🚀 Finalizado para AV1 (Abril/2026)🌟 Funcionalidades Principais🛡️ Segurança e BiometriaReconhecimento Facial: Identificação automática de moradores e visitantes via webcam.Entrada de Alerta (SOS): Botão discreto de "Acesso com Observação". Registra o evento como ENTRADA (ALERTA) em amarelo e envia uma notificação silenciosa com foto para o administrador.Monitoramento de Estranhos: Alerta visual quando um rosto não cadastrado permanece na câmera.📱 Interfone Digital (Telegram)Notificações em Tempo Real: O morador recebe uma foto no Telegram sempre que um visitante é identificado.Vínculo por CPF: Moradores podem se cadastrar no bot informando apenas o CPF cadastrado no sistema.Alerta Crítico: Notificação imediata ao Admin em caso de acionamento do botão de pânico.📊 Gestão e Auditoria (Baseado no sistema original)Galeria de Histórico: Logs visuais com Nome, Foto, Horário (Relógio) e status do acesso.Dashboard de Estatísticas: Contadores de fluxo de pessoas e tipos de usuários ativos.Sistema de Backups: Geração de pontos de restauração do banco de dados e download seguro (Exclusivo Admin).📂 Estrutura do RepositórioBashtopicos/
+Entendi, Giulia! Peço desculpas, às vezes a formatação aqui no chat pode embolar. Vou mandar agora o código **dentro de um bloco de código limpo**. 
+
+É só você clicar no botão de **"Copiar"** que aparece no canto superior direito do bloco preto abaixo e colar direto no seu arquivo `README.md`.
+
+---
+
+```markdown
+# 🏢 Portaria Inteligente - Biometria Facial & Interfone Digital
+
+Sistema de controle de acesso de alta segurança desenvolvido para a disciplina de **Segurança de Sistemas**. Integra Inteligência Artificial para reconhecimento facial, automação de notificações via Telegram e protocolos de entrada sob coação.
+
+> **Status do Projeto:** 🚀 Finalizado para AV1 (Abril/2026)
+
+---
+
+## 🌟 Funcionalidades Principais
+
+### 🛡️ Segurança e Biometria
+* **Reconhecimento Facial:** Identificação automática de usuários via webcam.
+* **Entrada de Alerta (SOS):** Botão discreto de "Acesso com Observação". Registra o evento como **ENTRADA (ALERTA)** em amarelo e notifica o administrador silenciosamente.
+* **Monitoramento de Estranhos:** Alerta visual quando um rosto não cadastrado é detectado.
+
+### 📱 Interfone Digital (Telegram)
+* **Notificações Automáticas:** O morador recebe uma foto no Telegram quando um visitante é identificado.
+* **Vínculo por CPF:** Moradores vinculam seus perfis ao bot informando apenas o CPF cadastrado.
+* **Alerta Crítico:** Notificação imediata ao Admin em caso de acionamento do botão de pânico.
+
+### 📊 Gestão e Auditoria
+* **Galeria de Histórico:** Logs visuais com Nome, Foto, Horário (Relógio) e status colorido.
+* **Dashboard de Estatísticas:** Contadores de fluxo e usuários ativos.
+* **Sistema de Backups:** Geração de pontos de restauração e download (Exclusivo Admin).
+
+---
+
+## 📂 Estrutura do Repositório
+
+```text
+topicos/
 ├── Portaria-Eletr-nica/    # Backend (Python/Flask/IA)
 │   ├── app.py              # Servidor Principal
 │   ├── portaria.db         # Banco de Dados SQLite
@@ -7,12 +44,54 @@
     ├── src/
     │   └── App.jsx         # Interface do Porteiro
     └── package.json
-🛠️ Como Rodar o Projeto1. Configurando o BackendBashcd Portaria-Eletr-nica
+```
+
+---
+
+## 🛠️ Como Rodar o Projeto
+
+### 1. Backend
+```bash
+cd Portaria-Eletr-nica
 python -m venv venv
-# Ativar venv: source venv/bin/activate (Linux/Mac) ou venv\Scripts\activate (Windows)
+# Ativar venv: venv\Scripts\activate (Windows) ou source venv/bin/activate (Linux)
 pip install flask flask-cors face_recognition numpy requests
 python app.py
-2. Configurando o FrontendBashcd front
+```
+
+### 2. Frontend
+```bash
+cd front
 npm install
 npm run dev
-🌐 Configurações de API (Integrações)No arquivo app.py, configure as seguintes chaves para habilitar a segurança:TELEGRAM_TOKEN: Gerado via @BotFather.ADMIN_CHAT_ID: Seu ID pessoal obtido via @userinfobot.Ngrok (Para uso em VM): Caso rode fora da rede local, utilize ngrok http 5000.📡 Documentação da APIUsuários e AcessosMétodoRotaDescriçãoGET/api/usersLista todos os usuários cadastradosPOST/api/usersCadastro de nova biometria facialPOST/api/users/:id/entradaRegistra entrada (aceita flag panic)POST/api/users/:id/saidaRegistra saída com snapshotHistórico e SistemaMétodoRotaDescriçãoGET/api/logRetorna histórico completo com fotosDELETE/api/logs/:idRemove registro (Admin apenas)GET/api/statsEstatísticas e contagem de fluxoPOST/api/backups/createGera novo ponto de restauração
+```
+
+---
+
+## 🌐 Configurações de API
+
+No arquivo `app.py`, configure:
+* **TELEGRAM_TOKEN:** Gerado via `@BotFather`.
+* **ADMIN_CHAT_ID:** Seu ID pessoal via `@userinfobot`.
+
+---
+
+## 📡 Documentação da API
+
+### Usuários e Acessos
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| **GET** | `/api/users` | Lista todos os usuários cadastrados |
+| **POST** | `/api/users` | Cadastro de nova biometria facial |
+| **POST** | `/api/users/:id/entrada` | Registra entrada (aceita flag panic) |
+| **POST** | `/api/users/:id/saida` | Registra saída com snapshot |
+
+### Histórico e Sistema
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| **GET** | `/api/log` | Retorna histórico completo com fotos |
+| **GET** | `/api/stats` | Estatísticas e contagem de fluxo |
+| **POST** | `/api/backups/create` | Gera novo ponto de restauração |
+
+
+Agora sim vai ficar lindo lá no seu GitHub! Conseguiu copiar?
