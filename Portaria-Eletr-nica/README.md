@@ -1,8 +1,3 @@
-Entendi, Giulia! Peço desculpas, às vezes a formatação aqui no chat pode embolar. Vou mandar agora o código **dentro de um bloco de código limpo**. 
-
-É só você clicar no botão de **"Copiar"** que aparece no canto superior direito do bloco preto abaixo e colar direto no seu arquivo `README.md`.
-
----
 
 ```markdown
 # 🏢 Portaria Inteligente - Biometria Facial & Interfone Digital
