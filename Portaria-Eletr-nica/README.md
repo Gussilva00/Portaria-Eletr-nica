@@ -1,10 +1,7 @@
 
-```markdown
-# 🏢 Portaria Inteligente - Biometria Facial & Interfone Digital
+## 🏢 Portaria Inteligente - Biometria Facial & Interfone Digital
 
 Sistema de controle de acesso de alta segurança desenvolvido para a disciplina de **Segurança de Sistemas**. Integra Inteligência Artificial para reconhecimento facial, automação de notificações via Telegram e protocolos de entrada sob coação.
-
-> **Status do Projeto:** 🚀 Finalizado para AV1 (Abril/2026)
 
 ---
 
@@ -88,5 +85,3 @@ No arquivo `app.py`, configure:
 | **GET** | `/api/stats` | Estatísticas e contagem de fluxo |
 | **POST** | `/api/backups/create` | Gera novo ponto de restauração |
 
-
-Agora sim vai ficar lindo lá no seu GitHub! Conseguiu copiar?
