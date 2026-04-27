@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portaria Eletrônica</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+  <div class="dot-header"></div>
+  <h1>Portaria Eletrônica</h1>
+</header>
+
+<div class="main">
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('portaria')">Portaria</button>
+    <button class="tab" onclick="showTab('cadastro')">Cadastro</button>
+    <button class="tab" onclick="showTab('historico')">Histórico</button>
+    <button class="tab" onclick="showTab('backups')">Backups</button>
+  </div>
+
+  <!-- PORTARIA -->
+  <div id="portaria" class="section active">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Cadastrados</div>
+        <div class="stat-val" id="s-total">–</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Dentro agora</div>
+        <div class="stat-val" id="s-inside" style="color:var(--green)">–</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Registros hoje</div>
+        <div class="stat-val" id="s-today">–</div>
+      </div>
+    </div>
+    <div class="search">
+      <input type="text" id="search" placeholder="Buscar por nome ou documento..." oninput="debounceSearch()">
+    </div>
+    <div id="portaria-grid" class="grid"></div>
+  </div>
+
+  <!-- CADASTRO -->
+  <div id="cadastro" class="section">
+    <div class="card">
+      <div class="card-title">Novo usuário</div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Nome completo *</label>
+          <input type="text" id="reg-name" placeholder="Ex: João Silva">
+        </div>
+        <div class="fg">
+          <label>Documento (CPF/RG)</label>
+          <input type="text" id="reg-doc" placeholder="000.000.000-00">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Tipo</label>
+          <select id="reg-type">
+            <option value="employee">Funcionário</option>
+            <option value="visitor">Visitante</option>
+            <option value="contractor">Prestador</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Observação</label>
+          <input type="text" id="reg-obs" placeholder="Opcional">
+        </div>
+      </div>
+      <button class="btn btn-green" onclick="createUser()">Cadastrar usuário</button>
+    </div>
+    <div class="card-title" style="margin-bottom:0.75rem">Usuários cadastrados</div>
+    <div id="ulist"></div>
+  </div>
+
+  <!-- HISTÓRICO -->
+  <div id="historico" class="section">
+    <div class="filters">
+      <select id="f-type" onchange="loadLog()">
+        <option value="">Todos os eventos</option>
+        <option value="entry">Entradas</option>
+        <option value="exit">Saídas</option>
+      </select>
+      <button class="btn btn-red" onclick="clearLog()">Limpar histórico</button>
+    </div>
+    <div class="card" style="padding: 0.25rem 1.25rem">
+      <div id="log-list"></div>
+    </div>
+  </div>
+
+  <!-- BACKUPS -->
+  <div id="backups" class="section">
+    <div class="card">
+      <div class="card-title">Gerenciar backups</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">
+        Backups são cópias do banco de dados salvas na pasta <code>backups/</code>.
+        Você pode criar, baixar ou restaurar qualquer backup.
+      </p>
+      <div class="backup-row">
+        <button class="btn btn-green" id="btn-backup" onclick="createBackup()">Criar backup agora</button>
+      </div>
+    </div>
+    <div class="card-title" style="margin-bottom:0.75rem">Backups disponíveis</div>
+    <div id="backup-list" class="backup-list"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
