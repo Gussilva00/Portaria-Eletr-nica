@@ -1,5 +1,5 @@
 
-## 🏢 Portaria Inteligente - Biometria Facial & Interfone Digital
+# 🏢 Portaria Inteligente - Biometria Facial & Interfone Digital
 
 Sistema de controle de acesso de alta segurança desenvolvido para a disciplina de **Segurança de Sistemas**. Integra Inteligência Artificial para reconhecimento facial, automação de notificações via Telegram e protocolos de entrada sob coação.
 
